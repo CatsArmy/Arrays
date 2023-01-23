@@ -2,13 +2,23 @@
 {
     return false;
 }
-Console.WriteLine("please enter how many student to evaluate: ");
+Console.WriteLine("please enter how many student to evaluate:");
 int count = int.Parse(Console.ReadLine());
 int[] Grades = new int[count];
 for (int i = 0; i < Grades.Length; i++)
 {
-    Console.WriteLine($"Enter Grade for student {i+1}");
-    Grades[i] = int.Parse(Console.ReadLine());
+    bool flag = false;
+    Grades[i] = -10;
+    Console.WriteLine($"Enter Grade for student {i + 1}");
+    while (Grades[i] < -1 || Grades[i] > 100)
+    {
+        if (flag || Grades[i] > 100)
+        {
+            Console.WriteLine("invalid grade try again");
+        }
+        Grades[i] = int.Parse(Console.ReadLine());
+        flag = true;
+    }
 }
 if (debug())
 {
